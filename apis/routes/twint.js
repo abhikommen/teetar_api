@@ -13,8 +13,14 @@ twintRouter.get('/', (req, res) => {
   res.send('Twint api home page')
 })
 
-twintRouter.get('/fetch/:userId', async (req, res) => {
-  res.send(await fetchTweets(req.params.userId))
+twintRouter.get('/fetch/', async (req, res) => {
+
+  const userNames = ["google", "facebook", "elonmusk", "amazon"]
+  const item = []
+  for(let item of userNames){
+    item.push(... await fetchTweets(item))
+  }
+  res.send(item)
 })
 
 export default twintRouter

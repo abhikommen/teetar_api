@@ -9,10 +9,16 @@ const app = express()
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
-    res.send('hello world')
+    res.send('Welcome World JavaScript')
 })
 
 app.use('/api', searchRouter)
 app.use('/twint', twintRouter)
 
-app.listen(process.env.PORT || 3000)
+app.listen(process.env.PORT || 3333 , (error)=> {
+    console.log("listening...")
+})
+
+process.on('uncaughtException', function (err) {
+    console.log(err);
+}); 
